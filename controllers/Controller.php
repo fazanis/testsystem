@@ -30,9 +30,12 @@ abstract class Controller
         if ($user['role'] == 'admin') {
             return true;
         }
-
+        if($user['role'] == 'registr'){
+            return true;
+        }
         // Иначе завершаем работу с сообщением об закрытом доступе
         die('Доступ запрещен');
     }
+    
 
 }

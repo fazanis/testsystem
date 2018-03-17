@@ -96,4 +96,16 @@ class User
         }
         header("Location: /login");
     }
+    
+    public static function getLoginUser()
+    {
+        $db = Db::getConnection();
+        $select = "SELECT * FROM users WHERE id=:id";
+        $result = $db->prepare($select);
+        $result -> bindParam(':id',$_SESSION['user'], PDO::PARAM_INT);
+        $result ->setFetchMode(PDO::FETCH_ASSOC);
+        $result ->execute();
+        $row = $result->fetch();
+        return $row['login'];
+    }
 }

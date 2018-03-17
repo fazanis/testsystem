@@ -17,10 +17,9 @@ class SiteController extends Controller {
     public function actionIndex() {
         self::checkAdmin();
         $title = "Тестирование";
-
-
-
-
+        
+        $user = User::getUserById($_SESSION['user']);
+        
         require_once(ROOT . '/views/site/index.php');
         return true;
     }
@@ -56,7 +55,11 @@ class SiteController extends Controller {
         require_once(ROOT . '/views/site/singin.php');
         return true;
     }
-    
+    public function actionLogout()
+    {
+        User::logout();
+        return true;
+    }
     
 
 }

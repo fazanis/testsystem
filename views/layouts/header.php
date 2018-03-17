@@ -8,9 +8,9 @@
 
         <title><?=$title?></title>
 
-        <link href="templates/css/style.default.css" rel="stylesheet">
-        <link href="templates/css/morris.css" rel="stylesheet">
-        <link href="templates/css/select2.css" rel="stylesheet" />
+        <link href="/templates/css/style.default.css" rel="stylesheet">
+        <link href="/templates/css/morris.css" rel="stylesheet">
+        <link href="/templates/css/select2.css" rel="stylesheet" />
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
