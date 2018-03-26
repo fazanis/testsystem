@@ -114,9 +114,6 @@ class User
     public function singupUser($login,$fio,$email,$password)
     {
         $db = Db::getConnection();
-       if ($this->loginValidate($login)){
-            return 'занят';
-       }else {
         $role = self::USER_STAGE;
         $select = "INSERT INTO users (login, parol, email, fio, role) VALUES (:login,:password, :email, :fio, :role)";
         $result = $db->prepare($select);
@@ -125,18 +122,20 @@ class User
         $result->bindParam(':email',$email,PDO::PARAM_STR);
         $result->bindParam(':fio',$fio,PDO::PARAM_STR);
         $result->bindParam(':role',$role,PDO::PARAM_STR);
-        return $result->execute();
-       }
-    }
 
-    public function loginValidate($login){
+         return $result->execute();
+
+}
+
+    public static function loginValidate($login){
         $db = Db::getConnection();
-        $select = "SELECT * FROM users WHERE login=:login";
+        $select = "SELECT COUNT(*) FROM users WHERE login=:login";
         $result = $db->prepare($select);
         $result->bindParam(':login',$login,PDO::PARAM_STR);
-        if ($result->execute()){
+        $result->execute();
+        if ($result->fetchColumn())
             return true;
-        }
+        return false;
     }
     public static function userRole($id){
 
@@ -192,5 +191,28 @@ class User
         $result->bindParam(':email',$email, PDO::PARAM_STR);
         $result->bindParam(':fio',$fio, PDO::PARAM_STR);
         $result->execute();
+    }
+
+    /**
+     * Проверяет не занят ли email другим пользователем
+     * @param type $email <p>E-mail</p>
+     * @return boolean <p>Результат выполнения метода</p>
+     */
+    public static function checkEmailExists($email)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'SELECT COUNT(*) FROM users WHERE email = :email';
+
+        // Получение результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->execute();
+
+        if ($result->fetchColumn())
+            return true;
+        return false;
     }
 }

@@ -65,14 +65,25 @@ class SiteController extends Controller {
     {
         $title = 'Регистрация нового пользователя';
         $user = new User();
-        if($_POST) {
+
+        if(isset($_POST['submit'])) {
+
             $login = $_POST['login'];
             $fio = $_POST['fio'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-
-            $user->singupUser($login,$fio,$email,$password);
-            header("Location: /signup");
+            $errors = false;
+            //валидация полей
+            if (User::loginValidate($login)) {
+                $errors[] = 'Такой логин уже используется';
+            }
+            if (User::checkEmailExists($email)) {
+                $errors[] = 'Такой email уже используется';
+            }
+            if ($errors == false) {
+                $user->singupUser($login, $fio, $email, $password);
+                header("Location: /login");
+            }
         }
         require_once(ROOT . '/views/site/singup.php');
         return true;
