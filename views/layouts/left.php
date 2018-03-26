@@ -11,11 +11,14 @@
                     
                     <h5 class="leftpanel-title">Навигация</h5>
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-                        <li><a href="messages.html"><span class="pull-right badge">5</span><i class="fa fa-envelope-o"></i> <span>Messages</span></a></li>
-                        <li class="parent"><a href=""><i class="fa fa-suitcase"></i> <span>UI Elements</span></a>
+                        <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+                        <li><a href="/tests/"><span class="pull-right badge">5</span><i class="fa fa-envelope-o"></i> <span>Тесты</span></a></li>
+                        <?if(User::userRole($user['id'])):?>
+                        <li><a href="/users/"><span class="pull-right badge">5</span><i class="fa fa-envelope-o"></i> <span>Пользователи</span></a></li>
+
+                        <li class="parent"><a href=""><i class="fa fa-suitcase"></i> <span>Пользователи</span></a>
                             <ul class="children">
-                                <li><a href="alerts.html">Alerts &amp; Notifications</a></li>
+                                <li><a href="/edituser/">Редактирование</a></li>
                                 <li><a href="buttons.html">Buttons</a></li>
                                 <li><a href="extras.html">Extras</a></li>
                                 <li><a href="graphs.html">Graphs &amp; Charts</a></li>
@@ -27,6 +30,7 @@
                                 <li><a href="typography.html">Typography</a></li>
                             </ul>
                         </li>
+                        <?endif;?>
                         <li class="parent"><a href=""><i class="fa fa-edit"></i> <span>Forms</span></a>
                             <ul class="children">
                                 <li><a href="code-editor.html">Code Editor</a></li>

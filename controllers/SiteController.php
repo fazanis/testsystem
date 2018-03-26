@@ -17,7 +17,7 @@ class SiteController extends Controller {
     public function actionIndex() {
         self::checkAdmin();
         $title = "Тестирование";
-        
+
         $user = User::getUserById($_SESSION['user']);
         
         require_once(ROOT . '/views/site/index.php');
@@ -58,6 +58,23 @@ class SiteController extends Controller {
     public function actionLogout()
     {
         User::logout();
+        return true;
+    }
+
+    public function actionSignup()
+    {
+        $title = 'Регистрация нового пользователя';
+        $user = new User();
+        if($_POST) {
+            $login = $_POST['login'];
+            $fio = $_POST['fio'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user->singupUser($login,$fio,$email,$password);
+            header("Location: /signup");
+        }
+        require_once(ROOT . '/views/site/singup.php');
         return true;
     }
     
