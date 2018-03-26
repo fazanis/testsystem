@@ -215,4 +215,12 @@ class User
             return true;
         return false;
     }
+
+    public static function getUserCol(){
+        $db = Db::getConnection();
+        $select = 'SELECT COUNT(*) FROM users';
+        $result = $db->query($select);
+       return $result->fetchColumn();
+
+    }
 }
