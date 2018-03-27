@@ -6,6 +6,12 @@ return array(
 
      // actionIndex в CatalogController
 
+    //рубрики
+    'rubric/([0-9]+)'=>'rubric/edit/$1',
+    'addrubric'=>'rubric/add',
+
+    'rubric'=>'rubric/index',
+
     //Users
 
     'users/([0-9]+)' => 'user/profile/$1',
