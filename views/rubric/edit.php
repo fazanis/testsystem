@@ -39,9 +39,14 @@
 
 
                             <div class="ckbox ckbox-primary">
+                                <?if ($rubrika['status']==1):?>
                                 <input name="status" type="checkbox" value="1" id="checkboxPrimary" checked="checked" />
+                                <?else:?>
+                                <input name="status" type="checkbox" value="1" id="checkboxPrimary" />
+                                <?endif;?>
                                 <label for="checkboxPrimary">Статус</label>
                             </div>
+
 
                             <input type="submit" name="submit" class="btn btn-primary">
 

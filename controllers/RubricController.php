@@ -48,8 +48,13 @@ class RubricController extends Controller
         $rubrika = $rubric->getRubdikById($id);
         if(isset($_POST['submit']))
         {
+            $status = '';
             $name = $_POST['name'];
-            $status = $_POST['status'];
+            if(isset($_POST['status'])) {
+                $status = $_POST['status'];
+            }else{
+                $status = 0;
+            }
 
             if($name!=''){
                 $rubric->updateRubric($name,$status,$id);

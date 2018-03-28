@@ -48,7 +48,15 @@ class Rubric
     }
 
     public function updateRubric($name,$status,$id){
-        echo $name;
+        $db = Db::getConnection();
+        $sql = "UPDATE rubrici SET name=:name,status=:status WHERE id=:id";
+        $result = $db->prepare($sql);
+        $result->bindParam(':name',$name,PDO::PARAM_STR);
+        $result->bindParam(':status',$status,PDO::PARAM_INT);
+        $result->bindParam(':id',$id,PDO::PARAM_INT);
+        $result->execute();
+
+
     }
 
 }
