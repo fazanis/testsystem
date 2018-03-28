@@ -9,8 +9,9 @@
 class TestController extends Controller
 {
     public function actionIndex(){
-        $title = 'Тестирование';
+        $title = 'Раздел тестов';
         $user = User::getUserById($_SESSION['user']);
+
 
         require_once(ROOT.'/views/test/index.php');
         return true;

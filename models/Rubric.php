@@ -59,4 +59,11 @@ class Rubric
 
     }
 
+        public static function getCountRubric(){
+        $db = Db::getConnection();
+        $select = 'SELECT COUNT(*) FROM rubrici';
+        $result = $db->query($select);
+        return $result->fetchColumn();
+    }
+
 }
