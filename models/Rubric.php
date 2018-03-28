@@ -48,7 +48,7 @@ class Rubric
     }
 
     public function updateRubric($name,$status,$id){
-
+        echo $name;
     }
 
 }
