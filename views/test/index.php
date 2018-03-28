@@ -35,8 +35,7 @@
                         <tr>
                             <th>№</th>
                             <th>Название</th>
-                            <th>Статус</th>
-
+                            <th>Редактирование</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,8 +44,13 @@
                         foreach ($testlist as $test):?>
                             <tr>
                                 <td><?=$i++?></td>
-                                <td><a href="/rubric/<?=$test['id']?>"><?=$rubrica['name']?></a></td>
-                                <td><?=$test['status']==1 ? 'Активный':'Не активный'?></td>
+                                <td><a href="/edittest/<?=$test['id']?>"><?=$test['name']?></a></td>
+                                <td>
+                                    <a href="/edittest/<?=$test['id']?>"><i class="fa fa-edit"></i></a>
+                                    <a href="#" onclick="del(<?=$test['id']?>)"><i class="glyphicon glyphicon-remove-sign"></i></a>
+<!--                                    delete/--><?//=$test['id']?>
+                                </td>
+                                <div id="cart-count"></div>
                             </tr>
                         <?endforeach;?>
                         </tbody>

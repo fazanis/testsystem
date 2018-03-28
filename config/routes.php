@@ -2,6 +2,9 @@
 
 return array(
      // Test:
+    'tests/delete/([0-9]+)' => 'test/delete/$1',
+    'edittest/([0-9]+)' => 'test/edit/$1',
+    'addtest' => 'test/addtest',
     'tests' => 'test/index',
 
      // actionIndex в CatalogController

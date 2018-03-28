@@ -12,7 +12,7 @@
                     <h5 class="leftpanel-title">Навигация</h5>
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-                        <li><a href="/tests/"><span class="pull-right badge">5</span><i class="fa fa-envelope-o"></i> <span>Тесты</span></a></li>
+                        <li><a href="/tests/"><span class="pull-right badge"><?=Test::getCountTest()?></span><i class="fa fa-envelope-o"></i> <span>Тесты</span></a></li>
                         <?if(User::userRole($user['id'])):?>
                         <li><a href="/users/"><span class="pull-right badge"><?=User::getUserCol();?></span><i class="fa fa-envelope-o"></i> <span>Пользователи</span></a></li>
                         <li><a href="/rubric/"><span class="pull-right badge"><?=Rubric::getCountRubric()?></span><i class="fa fa-envelope-o"></i> <span>Рубрики</span></a></li>
