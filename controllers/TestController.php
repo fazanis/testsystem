@@ -62,16 +62,6 @@ class TestController extends Controller
         return true;
     }
 
-    public function actionVoprosi($id)
-    {
-        self::checkAdmin();
-        $title = 'Раздел тестов';
-        $user = User::getUserById($_SESSION['user']);
-        require_once(ROOT . '/views/test/voprosi.php');
-        return true;
-
-    }
-
     // ajax delet
     public function actionDelete()
     {

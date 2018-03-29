@@ -1,12 +1,12 @@
-<?php require_once (ROOT."/views/layouts/header.php");?>
+<?php require_once(ROOT . "/views/layouts/header.php");?>
 
 <body>
 
-<?php require_once (ROOT."/views/layouts/top.php");?>
+<?php require_once(ROOT . "/views/layouts/top.php");?>
 
 <section>
     <div class="mainwrapper">
-        <?php require_once (ROOT."/views/layouts/left.php");?>
+        <?php require_once(ROOT . "/views/layouts/left.php");?>
 
         <div class="mainpanel">
             <div class="pageheader">
@@ -35,19 +35,22 @@
                         <tr>
                             <th>№</th>
                             <th>Название</th>
+                            <th>Ответы</th>
                             <th>Редактирование</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?
                         $i=1;
-                        foreach ($testlist as $test):?>
+                        foreach ($voprosList as $vopros):?>
                             <tr>
                                 <td><?=$i++?></td>
-                                <td><a href="/tests/voprosi/<?=$test['id']?>"><?=$test['name']?></a></td>
+                                <td><a href="/tests/voprosi/<?=$vopros['id']?>"><?=$vopros['vopros']?></a></td>
+                                <td><?=$vopros['otveti']?></td>
+                                <td><?=Voprosi::getOtvetiByArray($vopros['otveti'])?></td>
                                 <td>
-                                    <a href="/edittest/<?=$test['id']?>"><i class="fa fa-edit"></i></a>
-                                    <a href="#" onclick="del(<?=$test['id']?>)"><i class="glyphicon glyphicon-remove-sign"></i></a>
+                                    <a href="/edittest/<?=$vopros['id']?>"><i class="fa fa-edit"></i></a>
+                                    <a href="#" onclick="del(<?=$vopros['id']?>)"><i class="glyphicon glyphicon-remove-sign"></i></a>
 <!--                                    delete/--><?//=$test['id']?>
                                 </td>
                             </tr>
@@ -60,5 +63,5 @@
         </div><!-- mainpanel -->
     </div><!-- mainwrapper -->
 </section>
-<?php require_once (ROOT."/views/layouts/footer.php");?>
+<?php require_once(ROOT . "/views/layouts/footer.php");?>
 
