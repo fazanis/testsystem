@@ -8,6 +8,9 @@
 
         <title><?=$title?></title>
 
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
         <link href="/templates/css/style.default.css" rel="stylesheet">
         <link href="/templates/css/morris.css" rel="stylesheet">
         <link href="/templates/css/select2.css" rel="stylesheet" />

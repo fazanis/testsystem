@@ -57,8 +57,8 @@
                 </div><!-- table-responsive -->
             </div><!-- col-md-6 -->
 
-
         </div><!-- mainpanel -->
     </div><!-- mainwrapper -->
 </section>
 <?php require_once (ROOT."/views/layouts/footer.php");?>
+

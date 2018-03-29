@@ -9,15 +9,16 @@
 class Test
 {
 
-    public function getTestAll(){
+    public function getTestAll()
+    {
         $db = Db::getConnection();
         $sql = "SELECT * FROM testname";
         $result = $db->prepare($sql);
         $result->execute();
 
-        $i=0;
+        $i = 0;
 
-        while ($row = $result->fetch()){
+        while ($row = $result->fetch()) {
             $testlist[$i]['id'] = $row['id'];
             $testlist[$i]['name'] = $row['name'];
             $i++;
@@ -25,20 +26,23 @@ class Test
         return $testlist;
     }
 
-    public function addTest($name){
+    public function addTest($name,$rubrica)
+    {
         $db = Db::getConnection();
-        $select = "INSERT INTO testname (name) VALUES (:name)";
+        $select = "INSERT INTO testname (name,rubrica) VALUES (:name,:rubrica)";
         $result = $db->prepare($select);
-        $result->bindParam(':name',$name,PDO::PARAM_STR);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':rubrica', $rubrica, PDO::PARAM_INT);
 
         return $result->execute();
     }
 
-    public function getTestById($id){
+    public function getTestById($id)
+    {
         $db = Db::getConnection();
         $select = 'SELECT * FROM testname WHERE id=:id';
         $result = $db->prepare($select);
-        $result->bindParam(':id',$id,PDO::PARAM_INT);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
 
 
         // Выполняем запрос
@@ -48,27 +52,33 @@ class Test
         return $result->fetch();
     }
 
-    public function uploadTest($id,$name){
+    public function uploadTest($id, $name)
+    {
         $db = Db::getConnection();
         $sql = "UPDATE testname SET name=:name WHERE id = :id";
         $result = $db->prepare($sql);
-        $result->bindParam(':id',$id, PDO::PARAM_INT);
-        $result->bindParam(':name',$name, PDO::PARAM_STR);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
 
         $result->execute();
     }
 
-    public static function getCountTest(){
+    public static function getCountTest()
+    {
         $db = Db::getConnection();
         $select = 'SELECT COUNT(*) FROM testname';
         $result = $db->query($select);
         return $result->fetchColumn();
     }
 
-    public function delTest($id){
+    public static function delTest($id)
+    {
         $db = Db::getConnection();
-        $sql = "UPDATE testname SET name='123' WHERE id = :id";
+        $sql = "DELETE FROM testname WHERE id = :id";
         $result = $db->prepare($sql);
-        $result->bindParam(':id',$id, PDO::PARAM_INT);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+//echo $id;
+
     }
 }

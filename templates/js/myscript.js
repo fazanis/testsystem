@@ -1,22 +1,15 @@
 function del($id){
-    var id = $id;
-    alert(id);
-    $.post("/tests/delete/"+id, {}, function (data) {
-        $("#cart-count").html(data);
-    });
-    return false;
+    if (confirm("Вы действительно хотите удалить тест и его содержимое")) {
+
+        $.ajax({
+            url: '/tests/delete/',
+            type: 'POST',
+            data: {id: $id},
+            cache: false,
+            success: function (data) {
+                location.reload();
+
+            }
+        })
+    }
 }
-
-
-
-//    $(document).ready(function(){
-//        alert('asdadsad');
-////         $(".delettest").click(function () {
-//
-//        //     var id = $(this).attr("data-id");
-//        //     $.post("/cart/addAjax/"+id, {}, function (data) {
-//        //         $("#cart-count").html(data);
-//        //     });
-//        //     return false;
-////         });
-//    });
