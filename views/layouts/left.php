@@ -1,70 +1,30 @@
 <div class="leftpanel">
-                    <div class="media profile-left">
-                        <a class="pull-left profile-thumb" href="/profile/<?=$user['id']?>">
-                            <img class="img-circle" src="/templates/images/photos/profile.png" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><?= User::getLoginUser()?></h4>
-                            <small class="text-muted"><?=$user['role']?></small>
-                        </div>
-                    </div><!-- media -->
-                    
-                    <h5 class="leftpanel-title">Навигация</h5>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-                        <li><a href="/tests/"><span class="pull-right badge"><?=Test::getCountTest()?></span><i class="fa fa-envelope-o"></i> <span>Тесты</span></a></li>
-                        <?if(User::userRole($user['id'])):?>
-                        <li><a href="/users/"><span class="pull-right badge"><?=User::getUserCol();?></span><i class="fa fa-envelope-o"></i> <span>Пользователи</span></a></li>
-                        <li><a href="/rubric/"><span class="pull-right badge"><?=Rubric::getCountRubric()?></span><i class="fa fa-envelope-o"></i> <span>Рубрики</span></a></li>
+    <div class="media profile-left">
+        <a class="pull-left profile-thumb" href="/profile/<?= $user['id'] ?>">
+            <img class="img-circle" src="/templates/images/photos/profile.png" alt="">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading"><?= User::getLoginUser() ?></h4>
+            <small class="text-muted"><?= $user['role'] ?></small>
+        </div>
+    </div><!-- media -->
 
-                        <li class="parent"><a href=""><i class="fa fa-suitcase"></i> <span>Пользователи</span></a>
-                            <ul class="children">
-                                <li><a href="/edituser/">Редактирование</a></li>
-                                <li><a href="buttons.html">Buttons</a></li>
-                                <li><a href="extras.html">Extras</a></li>
-                                <li><a href="graphs.html">Graphs &amp; Charts</a></li>
-                                <li><a href="icons.html">Icons</a></li>
-                                <li><a href="modals.html">Modals</a></li>
-                                <li><a href="widgets.html">Panels &amp; Widgets</a></li>
-                                <li><a href="sliders.html">Sliders</a></li>                                
-                                <li><a href="tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                <li><a href="typography.html">Typography</a></li>
-                            </ul>
-                        </li>
-                        <?endif;?>
-                        <li class="parent"><a href=""><i class="fa fa-edit"></i> <span>Forms</span></a>
-                            <ul class="children">
-                                <li><a href="code-editor.html">Code Editor</a></li>
-                                <li><a href="general-forms.html">General Forms</a></li>
-                                <li><a href="form-layouts.html">Layouts</a></li>
-                                <li><a href="wysiwyg.html">Text Editor</a></li>
-                                <li><a href="form-validation.html">Validation</a></li>
-                                <li><a href="form-wizards.html">Wizards</a></li>
-                            </ul>
-                        </li>
-                        <li class="parent"><a href=""><i class="fa fa-bars"></i> <span>Tables</span></a>
-                            <ul class="children">
-                                <li><a href="basic-tables.html">Basic Tables</a></li>
-                                <li><a href="data-tables.html">Data Tables</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="maps.html"><i class="fa fa-map-marker"></i> <span>Maps</span></a></li>
-                        <li class="parent"><a href=""><i class="fa fa-file-text"></i> <span>Pages</span></a>
-                            <ul class="children">
-                                <li><a href="notfound.html">404 Page</a></li>
-                                <li><a href="blank.html">Blank Page</a></li>
-                                <li><a href="calendar.html">Calendar</a></li>
-                                <li><a href="invoice.html">Invoice</a></li>
-                                <li><a href="locked.html">Locked Screen</a></li>
-                                <li><a href="media-manager.html">Media Manager</a></li>
-                                <li><a href="people-directory.html">People Directory</a></li>
-                                <li><a href="profile.html">Profile</a></li>                                
-                                <li><a href="search-results.html">Search Results</a></li>
-                                <li><a href="signin.html">Sign In</a></li>
-                                <li><a href="signup.html">Sign Up</a></li>
-                            </ul>
-                        </li>
-                        
-                    </ul>
-                    
-                </div><!-- leftpanel -->
+    <h5 class="leftpanel-title">Навигация</h5>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+        <li><a href="/teststirovanie/"><i class="fa fa-envelope-o"></i> <span>Тестирование</span></a></li>
+
+        <? if (User::userRole($user['id'])): ?>
+            <li><a href="/rubric/"><span class="pull-right badge"><?= Rubric::getCountRubric() ?></span><i
+                            class="fa fa-suitcase"></i> <span>Рубрики</span></a></li>
+            <li><a href="/tests/"><span class="pull-right badge"><?= Test::getCountTest() ?></span><i
+                            class="fa fa-bars"></i> <span>Тесты</span></a></li>
+            <li><a href="/users/"><span class="pull-right badge"><?= User::getUserCol(); ?></span><i
+                            class="fa fa-user"></i> <span>Пользователи</span></a></li>
+
+
+        <? endif; ?>
+
+    </ul>
+
+</div><!-- leftpanel -->
