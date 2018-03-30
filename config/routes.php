@@ -1,6 +1,8 @@
 <?php
 
 return array(
+    //teststirovanie
+    'teststirovanie' => 'teststirovanie/index',
      // Test:
     'vopros/delete' => 'voprosi/delete',
     'tests/editvopros/([0-9]+)' => 'voprosi/editvopros/$1',
