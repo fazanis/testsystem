@@ -2,7 +2,10 @@
 
 return array(
      // Test:
+    'vopros/delete' => 'voprosi/delete',
+    'tests/editvopros/([0-9]+)' => 'voprosi/editvopros/$1',
     'tests/voprosi/([0-9]+)' => 'voprosi/voprosi/$1',
+    'tests/voprosi/addvopros' => 'voprosi/addvopros',
 
     'tests/delete' => 'test/delete',
     'edittest/([0-9]+)' => 'test/edit/$1',

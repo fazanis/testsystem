@@ -29,15 +29,64 @@ class Voprosi extends Test
     }
 
     public static function getOtvetiByArray($array){
-//        var_dump($array);
-//        foreach ($array as $otvet){
-          //$str = array_keys($array);
 
-        echo gettype($array);
-        echo json_decode($array);
+       return $var = json_decode($array);
 
+    }
 
-//        }
-       // return $end;
+    public static function doArrayInJson($array1,$array2){
+        $array = array_combine($array1,$array2);
+        return json_encode($array, JSON_UNESCAPED_UNICODE);
+    }
+
+    public static function saveVopros($id_testa,$vopros,$otveti){
+
+        $db = Db::getConnection();
+        $sql = 'INSERT INTO voprosi (id_testa,vopros, otveti) VALUES (:id_testa,:vopros,:otveti)';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id_testa',$id_testa,PDO::PARAM_INT);
+        $result->bindParam(':vopros',$vopros,PDO::PARAM_STR);
+        $result->bindParam(':otveti',$otveti,PDO::PARAM_STR);
+        $result->execute();
+    }
+
+    public function getVoprosById($id){
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM voprosi WHERE id=:id';
+        $result = $db->prepare($sql);
+
+        $result->bindParam(':id',$id,PDO::PARAM_INT);
+        $result->execute();
+        $i=0;
+        while ($row = $result->fetch()){
+            $resultList['id'] = $row['id'];
+            $resultList['vopros'] = $row['vopros'];
+            $resultList['otveti'] = $row['otveti'];
+            $i++;
+        }
+
+        return $resultList;
+
+    }
+
+    public static function updateVopros($id,$vopros,$otveti){
+        $db = Db::getConnection();
+        $sql = 'UPDATE voprosi SET vopros=:vopros, otveti=:otveti WHERE id=:id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id',$id,PDO::PARAM_INT);
+        $result->bindParam(':vopros',$vopros,PDO::PARAM_STR);
+        $result->bindParam(':otveti',$otveti,PDO::PARAM_STR);
+        $result->execute();
+    }
+
+    public static function delVopros($id)
+    {
+        $db = Db::getConnection();
+        $sql = "DELETE FROM voprosi WHERE id = :id";
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+//echo $id;
+
     }
 }

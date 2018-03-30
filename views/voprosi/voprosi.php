@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <h5 class="lg-title mb5"><?=$title?></h5>
                 <div class="panel-footer">
-                    <a href="/addtest/"><button class="btn btn-primary">Добавить тест</button></a>
+                    <a href="/tests/voprosi/addvopros/"><button class="btn btn-primary">Добавить вопрос</button></a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped mb30">
@@ -45,12 +45,17 @@
                         foreach ($voprosList as $vopros):?>
                             <tr>
                                 <td><?=$i++?></td>
-                                <td><a href="/tests/voprosi/<?=$vopros['id']?>"><?=$vopros['vopros']?></a></td>
-                                <td><?=$vopros['otveti']?></td>
-                                <td><?=Voprosi::getOtvetiByArray($vopros['otveti'])?></td>
+                                <td><a href="/tests/editvopros/<?=$vopros['id']?>"><?=$vopros['vopros']?></a></td>
                                 <td>
-                                    <a href="/edittest/<?=$vopros['id']?>"><i class="fa fa-edit"></i></a>
-                                    <a href="#" onclick="del(<?=$vopros['id']?>)"><i class="glyphicon glyphicon-remove-sign"></i></a>
+                                    <table class="table table-striped mb30">
+                                    <? foreach (Voprosi::getOtvetiByArray($vopros['otveti']) as $variant => $ball):?>
+                                        <tr><td><?= $variant ?></td><td><?= $ball ?></td></tr>
+                                    <? endforeach; ?>
+                                    </table>
+                                </td>
+                                <td>
+                                    <a href="/tests/editvopros/<?=$vopros['id']?>"><i class="fa fa-edit"></i></a>
+                                    <a href="#" onclick="delvop(<?=$vopros['id']?>)"><i class="glyphicon glyphicon-remove-sign"></i></a>
 <!--                                    delete/--><?//=$test['id']?>
                                 </td>
                             </tr>
