@@ -81,4 +81,37 @@ class Test
 //echo $id;
 
     }
+
+    public function getTestByRybricId($id){
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM testname WHERE rubrica = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+
+        $i=0;
+        while ($row = $result->fetch()){
+            $resultList[$i]['id'] = $row['id'];
+            $resultList[$i]['name'] = $row['name'];
+            $resultList[$i]['rubrica'] = $row['rubrica'];
+            $i++;
+        }
+
+        return $resultList;
+    }
+
+    public function getColTestInRub($id_rub){
+        $db = Db::getConnection();
+        $sql = 'SELECT COUNT(*) FROM voprosi WHERE id_testa = :id_rub';
+
+        // Получение результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id_rub', $id_rub, PDO::PARAM_STR);
+        $result->execute();
+
+            return $result->fetchColumn();
+
+    }
+
+
 }

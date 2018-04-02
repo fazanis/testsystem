@@ -2,6 +2,8 @@
 
 return array(
     //teststirovanie
+    'teststirovanie/voprosi/([0-9]+)' => 'teststirovanie/voprosi/$1',
+    'teststirovanie/testi/([0-9]+)' => 'teststirovanie/testi/$1',
     'teststirovanie' => 'teststirovanie/index',
      // Test:
     'vopros/delete' => 'voprosi/delete',

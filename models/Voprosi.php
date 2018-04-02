@@ -89,4 +89,34 @@ class Voprosi extends Test
 //echo $id;
 
     }
+    public function getMaxBall($id){
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM voprosi WHERE id_testa = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        $i=0;
+
+
+        while ($row = $result->fetch()) {
+            $rezList[$i]['otveti'] = $row['otveti'];
+
+$i++;
+        }
+        $end = 0;
+        foreach ($rezList as $item) {
+
+             $str = json_decode($item['otveti'],true);
+
+            $max = max($str);
+            $end = $end +$max;
+
+        }
+
+
+
+      return $end;
+
+    }
+
 }
