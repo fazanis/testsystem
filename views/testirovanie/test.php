@@ -74,8 +74,7 @@
                                             foreach (Voprosi::getOtvetiByArray($vopros['otveti']) as $otvet => $parv):?>
 
                                                 <div class="radio"><label><input type="radio" name='vopros<?= $i ?>'
-                                                                                 value="<?= $parv ?>">=<?= $parv ?>
-                                                        = <?= $otvet ?>
+                                                                                 value="<?= $parv ?>"> <?= $otvet ?>
                                                     </label></div>
 
                                             <? endforeach; ?>
