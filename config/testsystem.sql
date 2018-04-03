@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 02 2018 г., 14:51
+-- Время создания: Апр 03 2018 г., 08:03
 -- Версия сервера: 5.7.11
 -- Версия PHP: 7.0.4
 
@@ -31,8 +31,19 @@ CREATE TABLE IF NOT EXISTS `rezultat` (
   `user` int(11) NOT NULL,
   `id_testa` int(11) NOT NULL,
   `rezultat` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
   `create_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `rezultat`
+--
+
+INSERT INTO `rezultat` (`id`, `user`, `id_testa`, `rezultat`, `max`, `create_at`) VALUES
+(1, 1, 7, 6, 15, 1522723975),
+(2, 1, 7, 11, 15, 1522724042),
+(3, 1, 4, 0, 50, 1522730932),
+(4, 1, 4, 50, 50, 1522730945);
 
 -- --------------------------------------------------------
 
@@ -44,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `rubrici` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `rubrici`
@@ -53,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `rubrici` (
 INSERT INTO `rubrici` (`id`, `name`, `status`) VALUES
 (1, 'Рубрика 1', 1),
 (2, 'Рубрика2', 1),
-(3, 'Рубрика4', 0);
+(3, 'Рубрика4', 1),
+(4, 'Самая новая рубрика', 1);
 
 -- --------------------------------------------------------
 
@@ -72,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `testname` (
 --
 
 INSERT INTO `testname` (`id`, `name`, `rubrica`) VALUES
-(1, 'Биология', 0),
-(4, 'Самый интересный тест', 0),
+(1, 'Биология', 2),
+(4, 'Самый интересный тест', 3),
 (7, 'Тест с рубрикой', 1);
 
 -- --------------------------------------------------------
@@ -113,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `voprosi` (
   `id_testa` int(11) NOT NULL,
   `vopros` varchar(255) NOT NULL,
   `otveti` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `voprosi`
@@ -122,7 +134,8 @@ CREATE TABLE IF NOT EXISTS `voprosi` (
 INSERT INTO `voprosi` (`id`, `id_testa`, `vopros`, `otveti`) VALUES
 (1, 7, 'Первый вопрос', '{"да":"1","нет":"5","незнаю":"0","1234134":"1"}'),
 (3, 7, 'Самостоятельный вопрос', '{"да":"1","нет":"5","незнаю":"0"}'),
-(4, 7, 'Новый воперос', '{"новый ответ":"1","неправильный ответ":"0","лучший ответ":"5"}');
+(4, 7, 'Новый воперос', '{"новый ответ":"1","неправильный ответ":"0","лучший ответ":"5"}'),
+(5, 4, 'Проверочный тест', '{"не тот ответ":"0","Тот ответ":"50"}');
 
 --
 -- Индексы сохранённых таблиц
@@ -168,12 +181,12 @@ ALTER TABLE `voprosi`
 -- AUTO_INCREMENT для таблицы `rezultat`
 --
 ALTER TABLE `rezultat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `rubrici`
 --
 ALTER TABLE `rubrici`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `testname`
 --
@@ -188,7 +201,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `voprosi`
 --
 ALTER TABLE `voprosi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
