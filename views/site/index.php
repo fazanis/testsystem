@@ -196,7 +196,7 @@
                                     <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i
                                                 class="fa fa-times"></i></a>
                                 </div><!-- panel-btns -->
-                                <div class="panel-icon"><i class="fa fa-dollar"></i></div>
+                                <div class="panel-icon"><i class="fa fa-file-archive-o"></i></div>
                                 <div class="media-body">
                                     <h5 class="md-title nomargin">Тестов в системе</h5>
                                     <h1 class="mt5"><?= Test::getCountTest() ?></h1>
