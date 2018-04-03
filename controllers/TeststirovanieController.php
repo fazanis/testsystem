@@ -16,7 +16,7 @@ class TeststirovanieController extends Controller
         $user = User::getUserById($_SESSION['user']);
 
         $rubriki = new Rubric();
-        $rubrikList = $rubriki->getAllRubric();
+        $rubrikList = $rubriki->getAllRubricStatusActiv();
 
 
         require_once(ROOT . '/views/testirovanie/index.php');
@@ -49,7 +49,6 @@ class TeststirovanieController extends Controller
         $vopros = new Voprosi();
         $voprosList = $vopros->getVoprosiByTestId($id);
         $maxBall = $vopros->getMaxBall($id);
-
         $errors = false;
         if (isset($_POST['submit'])) {
             $arpost = $_POST;
@@ -57,25 +56,9 @@ class TeststirovanieController extends Controller
             if (count($arpost)){
                 $arposts = array_sum($arpost);
                 $arpost = json_encode($arpost);
-//                echo $arpost;
-//                echo '<pre>';
-//                print_r($arpost);
-//                echo '</pre>';
-//                echo '<pre>';
-//                print_r($arposts);
-//                echo '</pre>';
-//                echo '<pre>';
-//                print_r($id);
-//                echo '</pre>';
-//                echo '<pre>';
-//                print_r($user['id']);
-//                echo '</pre>';
-//                echo '<pre>';
-//                print_r($maxBall);
-//                echo '</pre>';
-//
-//                echo 'Вы набрали '.$arposts.' из '.$maxBall;
+                $userid = $user['id'];
 
+                $vopros->saveRezult($userid,$id,$maxBall,$arposts);
             }else{
                 $errors[] = 'Вы не ответили на вопросы';
             }

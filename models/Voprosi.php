@@ -105,20 +105,33 @@ class Voprosi extends Test
 
 $i++;
         }
-        $end = 0;
-        foreach ($rezList as $item) {
+        if(isset($rezList)) {
+            $end = 0;
+            foreach ($rezList as $item) {
 
-             $str = json_decode($item['otveti'],true);
+                $str = json_decode($item['otveti'], true);
 
-            $max = max($str);
-            $end = $end +$max;
+                $max = max($str);
+                $end = $end + $max;
 
+            }
+
+
+            return $end;
         }
+    }
 
-
-
-      return $end;
-
+    public function saveRezult($userid,$id_testa,$maxBall,$rezultat){
+        $time = time();
+        $db = Db::getConnection();
+        $sql = 'INSERT INTO rezultat (user,id_testa, rezultat,max,create_at) VALUES (:userid,:id_testa,:rezultat,:max,:create_at)';
+        $result = $db->prepare($sql);
+        $result->bindParam(':userid',$userid,PDO::PARAM_INT);
+        $result->bindParam(':id_testa',$id_testa,PDO::PARAM_INT);
+        $result->bindParam(':rezultat',$rezultat,PDO::PARAM_INT);
+        $result->bindParam(':max',$maxBall,PDO::PARAM_INT);
+        $result->bindParam(':create_at',$time,PDO::PARAM_INT);
+        $result->execute();
     }
 
 }

@@ -19,7 +19,7 @@ class SiteController extends Controller {
         $title = "Тестирование";
 
         $user = User::getUserById($_SESSION['user']);
-        
+        $rezultatList = Rezultat::getAllRezulataByUser();
         require_once(ROOT . '/views/site/index.php');
         return true;
     }

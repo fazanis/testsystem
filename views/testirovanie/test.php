@@ -59,6 +59,7 @@
                             </thead>
                             <form method="post" action="">
                                 <tbody>
+                                <?if(isset($voprosList)):?>
                                 <?
                                 $i = 1;
                                 foreach ($voprosList as $vopros):
@@ -87,11 +88,13 @@
 
                                 <? endforeach; ?>
 
+
                                 <tr>
                                     <td colspan="2">
                                         <button type="submit" name="submit">Отправить результат</button>
                                     </td>
                                 </tr>
+                                <?endif;?>
                                 </tbody>
                         </table>
                         </form>

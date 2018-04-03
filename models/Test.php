@@ -97,7 +97,7 @@ class Test
             $resultList[$i]['rubrica'] = $row['rubrica'];
             $i++;
         }
-
+if(isset($resultList))
         return $resultList;
     }
 

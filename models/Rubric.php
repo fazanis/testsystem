@@ -22,6 +22,19 @@ class Rubric
         }
         return $rubricList;
     }
+    public function getAllRubricStatusActiv(){
+        $db = Db::getConnection();
+        $select = 'SELECT * FROM rubrici WHERE status=1';
+        $result = $db->query($select);
+        $i=0;
+        while ($row = $result->fetch()) {
+            $rubricList[$i]['id'] = $row['id'];
+            $rubricList[$i]['name'] = $row['name'];
+            $rubricList[$i]['status'] = $row['status'];
+            $i++;
+        }
+        return $rubricList;
+    }
 
     public function addRubric($name,$status){
         $db = Db::getConnection();

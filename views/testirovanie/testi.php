@@ -1,12 +1,12 @@
-<?php require_once(ROOT . "/views/layouts/header.php");?>
+<?php require_once(ROOT . "/views/layouts/header.php"); ?>
 
     <body>
 
-<?php require_once(ROOT . "/views/layouts/top.php");?>
+<?php require_once(ROOT . "/views/layouts/top.php"); ?>
 
     <section>
         <div class="mainwrapper">
-            <?php require_once(ROOT . "/views/layouts/left.php");?>
+            <?php require_once(ROOT . "/views/layouts/left.php"); ?>
 
             <div class="mainpanel">
                 <div class="pageheader">
@@ -17,9 +17,9 @@
                         <div class="media-body">
                             <ul class="breadcrumb">
                                 <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
-                                <li><?=$title?></li>
+                                <li><?= $title ?></li>
                             </ul>
-                            <h4><?=$title?></h4>
+                            <h4><?= $title ?></h4>
                         </div>
                     </div><!-- media -->
                 </div><!-- pageheader -->
@@ -36,14 +36,19 @@
                             </thead>
                             <tbody>
                             <?
-                            $i=1;
-                            foreach ($testList as $test):?>
-                                <tr>
-                                    <td><?=$i++?></td>
-                                    <td><a href="/teststirovanie/voprosi/<?=$test['id']?>"><?=$test['name']?></a></td>
+                            if (isset($testList)): ?>
+                                <?
+                                $i = 1;
+                                foreach ($testList as $test):?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td>
+                                            <a href="/teststirovanie/voprosi/<?= $test['id'] ?>"><?= $test['name'] ?></a>
+                                        </td>
 
-                                </tr>
-                            <?endforeach;?>
+                                    </tr>
+                                <?endforeach; ?>
+                            <?endif; ?>
                             </tbody>
                         </table>
                     </div><!-- table-responsive -->
@@ -52,7 +57,7 @@
             </div><!-- mainpanel -->
         </div><!-- mainwrapper -->
     </section>
-<?php require_once(ROOT . "/views/layouts/footer.php");?>
+<?php require_once(ROOT . "/views/layouts/footer.php"); ?>
 
 <?php
 /**
