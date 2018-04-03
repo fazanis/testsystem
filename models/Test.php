@@ -52,13 +52,14 @@ class Test
         return $result->fetch();
     }
 
-    public function uploadTest($id, $name)
+    public function uploadTest($id, $name,$rubrica)
     {
         $db = Db::getConnection();
-        $sql = "UPDATE testname SET name=:name WHERE id = :id";
+        $sql = "UPDATE testname SET name=:name,rubrica=:rubrica  WHERE id = :id";
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':rubrica', $rubrica, PDO::PARAM_STR);
 
         $result->execute();
     }

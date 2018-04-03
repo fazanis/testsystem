@@ -30,7 +30,15 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Название Теста</label>
                         <div class="col-sm-8">
-                            <input type="text" name="name" value="<?=$onetest['name']?>" placeholder="Название рубрики" class="form-control" />
+                            <input type="text" name="name" value="<?=$onetest['name']?>" placeholder="Название теста" class="form-control" />
+                            <br>
+                            <br>
+                            <br>
+                            <select id="select-search-hide" data-placeholder="Choose One" class="width300" name="rubrica">
+                                <? foreach ($rubricList as $item):?>
+                                    <option value="<?=$item['id']?>"> <?=$item['name']?></option>
+                                <?endforeach;?>
+                            </select>
                         </div>
                     </div><!-- form-group -->
                     <div class="form-group">

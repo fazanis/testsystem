@@ -48,11 +48,14 @@ class TestController extends Controller
         $title = 'Раздел тестов';
         $user = User::getUserById($_SESSION['user']);
         $test = new Test();
+        $rubric = new Rubric();
+        $rubricList = $rubric->getAllRubric();
         $onetest = $test->getTestById($id);
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
+            $rubrica = $_POST['rubrica'];
             if ($name != '') {
-                $test->uploadTest($id, $name);
+                $test->uploadTest($id, $name,$rubrica);
                 header("Location: /tests/");
             }
 

@@ -42,6 +42,7 @@
                         <tbody>
                         <?
                         $i=1;
+                        if(isset($voprosList)):
                         foreach ($voprosList as $vopros):?>
                             <tr>
                                 <td><?=$i++?></td>
@@ -59,7 +60,8 @@
 <!--                                    delete/--><?//=$test['id']?>
                                 </td>
                             </tr>
-                        <?endforeach;?>
+                        <?endforeach;
+                        endif;?>
                         </tbody>
                     </table>
                 </div><!-- table-responsive -->

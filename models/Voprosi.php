@@ -23,8 +23,10 @@ class Voprosi extends Test
             $resultList[$i]['otveti'] = $row['otveti'];
             $i++;
         }
+        if(isset($resultList)) {
+            return $resultList;
+        }
 
-        return $resultList;
 
     }
 
